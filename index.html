@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Exercise Countdown</title>
+	<style>
+		body {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			font-family: Arial, sans-serif;
+			font-size: 50pt;
+			height: 100vh;
+			margin: 0;
+			background-color: #040C23;
+			color: #F76404;
+		}
+		h1, #timer {
+			font-family: Arial, sans-serif;
+			font-size: 50pt;
+			text-align: center;
+		}
+		#progress {
+			width: 400px;
+			height: 5px;
+			background-color: #F76404;
+			margin-top: 20px;
+			transition: width 1s ease-in-out;
+		}
+	</style>
+</head>
+<body>
+	<h1 id="text">Are You Ready?</h1>
+	<div id="timer">10</div>
+	<div id="progress"></div>
+
+	<script>
+		// Set the initial countdown value and the exercise list
+		var countdown = 10;
+		var exercises = ["Are you ready?", "10 Squats", "10 Pushups", "10 Situps", "20 Front Lunges", "20 Side Lunges", "20 Reverse Lunges", "20 Bicep Curls (left)", "20 Bicel Curls (Right)", "15 Straight-Legged Deadlifts", "15 Side Stretches (Right)", "15 Side Stretches (Left)", "15 Overhead Raises (Right)", "15 Overhead Raises (Left)", "5 Pullups", "Breathe", "Complete!"];
+		var exerciseDurations = [10, 30, 30, 30, 60, 60, 60, 90, 90, 90, 60, 60, 90, 90, 60, 60, 0];
+		var progressWidth = 400;
+
+		// Define the update function that will be called every second
+		var update = function() {
+			// Decrement the countdown value
+			countdown--;
+
+			// Update the timer element
+			document.getElementById("timer").innerHTML = countdown;
+
+			// Update the progress bar
+			var progress = document.getElementById("progress");
+			var duration = exerciseDurations[exercises.indexOf(document.getElementById("text").innerHTML)];
+			progress.style.width = ((countdown / duration) * progressWidth) + "px";
+
+			// If the countdown reaches zero, change the text and start a new countdown
+			if (countdown == 0) {
+				// Get the current exercise index
+				var index = exercises.indexOf(document.getElementById("text").innerHTML);
+
+				// If the current exercise is not the last one, change the text and start a new countdown
+				if (index < exercises.length - 1) {
+					document.getElementById("text").innerHTML = exercises[index + 1];
+					countdown = exerciseDurations[index + 1];
+					document.getElementById("timer").innerHTML = countdown;
+					progress.style.backgroundColor = "#F76404";
+					progress.style.width = progressWidth + "px";
+				}
+				// If the current exercise is the last one, stop the countdown timer and remove the timer and progress elements
+				else {
+					clearInterval(timer);
+					document.getElementById("timer").remove();
+					document.getElementById("progress").remove();
+				}
+			}
+			// If the countdown is halfway done, change the progress bar color to yellow
+			else if (countdown == duration / 2) {
+				progress.style.backgroundColor = "yellow";
+			}
+
+			// If the countdown reaches zero and the current exercise is "Complete!", stop the countdown timer and remove the timer and progress elements
+			if (countdown == 0 && document.getElementById("text").innerHTML === "Complete!") {
+				clearInterval(timer);
+				document.getElementById("timer").remove();
+				document.getElementById("progress").remove();
+			}
+		};
+
+		// Call the update function every second
+		var timer = setInterval(update, 1000);
+	</script>
+</body>
+</html>
