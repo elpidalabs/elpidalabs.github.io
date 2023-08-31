@@ -1,24 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hacker News Feed</title>
-    <style>
-        body {
-            background-color: black;
-            font-family: 'Courier New', monospace;
-            color: lime;
-            font-size: 16px;
-        }
-        a {
-            color: lime;
-            text-decoration: none;
-        }
-    </style>
+  <title>Ankylosing Spondylitis: A Detailed Explainer</title>
+  <style>
+    body {
+      font-family: 'Times New Roman', serif;
+      margin-left: 26%;
+      margin-right: 26%;
+      font-size: 20px;
+      color: black;
+    }
+    h1 {
+      font-size: 2.5em;
+      font-weight: normal;
+      text-align: center;
+    }
+    h2 {
+      font-size: 2em;
+      font-weight: normal;
+    }
+    h3 {
+      font-weight: normal; /* Not bold */
+    }
+    #subheader {
+      font-size: 22px;
+      color: darkgray;
+      text-align: center;
+    }
+    #table-of-contents {
+      display: none;
+      text-align: left; /* Center align */
+    }
+    #table-of-contents a {
+      color: black; /* Same color as text */
+      text-decoration: underline; /* Underlined */
+    }
+    .footnote-ref {
+      text-decoration: none;
+      position: relative;
+      font-size: 14px;
+    }
+    .footnote-pop {
+      display: none;
+      position: absolute;
+      background-color: #000000;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+      font-size: 18px;
+      padding: 10px;
+      min-width: 100px;
+      color: white;
+    }
+    .footnote {
+      text-decoration: none; /* No underline */
+    }
+  </style>
+<script>
+    function toggleTOC() {
+      var toc = document.getElementById("table-of-contents");
+      if (toc.style.display === "none") {
+        toc.style.display = "block";
+      } else {
+        toc.style.display = "none";
+      }
+    }
+
+    function showPopup(event, element) {
+      element.style.display = 'block';
+      element.style.left = event.clientX + 'px';
+      element.style.top = event.clientY + 'px';
+    }
+
+    function hidePopup(element) {
+      element.style.display = 'none';
+    }
+
+    // New Function to update Table of Contents
+    document.addEventListener("DOMContentLoaded", function () {
+      const toc = document.getElementById("table-of-contents");
+      const tocList = toc.querySelector("ul");
+      tocList.innerHTML = "";
+      
+      document.querySelectorAll("h2").forEach(function(h2, index) {
+        const id = "subtitle" + (index + 1);
+        h2.id = id;
+        const listItem = document.createElement("li");
+        listItem.innerHTML = `<a href="#${id}">${h2.textContent}</a>`;
+        tocList.appendChild(listItem);
+      });
+    });
+
+  </script>
 </head>
 <body>
-    <div id="content"></div>
-    <script src="script.js"></script>
+
+  <h1>Ankylosing Spondylitis:<br>A Detailed Explainer</h1>
+  <div id="subheader">A comprehensive outline of what's happening in the body of someone with Ankylosing Spondylitis (AS)</div><br><br>
+
+  <h3 onClick="toggleTOC()">Table of Contents &#9660;</h3>
+  <div id="table-of-contents">
+    <ul>
+      <li><a href="#subtitle1">Introduction</a></li>
+      <li><a href="#subtitle2">Subtitle 2</a></li>
+    </ul>
+  </div>
+
+  <p>Lorem ipsum dolor sit amet<sup class="footnote-ref" id="ref1" onmouseover="showPopup(event, this.nextElementSibling)" onmouseout="hidePopup(this.nextElementSibling)">[1]</sup><span class="footnote-pop"><b>This</b> is a test box.</span>, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  <h2 id="subtitle1">Subtitle 1</h2>
+  <p>Varius duis at consectetur lorem donec massa sapien faucibus. Velit egestas dui id ornare arcu. Aliquet nibh praesent tristique magna sit amet purus gravida quis. Tortor consequat id porta nibh venenatis cras.<br><br>
+  Varius duis at consectetur lorem donec massa sapien faucibus. Velit egestas dui id ornare arcu. Aliquet nibh praesent tristique magna sit amet purus gravida quis. Tortor consequat id porta nibh venenatis cras.<br></br>
+  Varius duis at consectetur lorem donec massa sapien faucibus. Velit egestas dui id ornare arcu. Aliquet nibh praesent tristique magna sit amet purus gravida quis. Tortor consequat id porta nibh venenatis cras.</p>
+
+  <h2 id="subtitle2">Subtitle 2</h2>
+  <p>Id semper risus in hendrerit gravida rutrum quisque. Sit amet aliquam id diam maecenas ultricies mi eget. Ultrices eros in cursus turpis massa tincidunt dui.</p>
+  <p>Id semper risus in hendrerit gravida rutrum quisque. Sit amet aliquam id diam maecenas ultricies mi eget. Ultrices eros in cursus turpis massa tincidunt dui.</p>
+  
+   <h2 id="subtitle2">Subtitle 3</h2>
+  <p>Id semper risus in hendrerit gravida rutrum quisque. Sit amet aliquam id diam maecenas ultricies mi eget. Ultrices eros in cursus turpis massa tincidunt dui.</p>
+  <p>Id semper risus in hendrerit gravida rutrum quisque. Sit amet aliquam id diam maecenas ultricies mi eget. Ultrices eros in cursus turpis massa tincidunt dui.</p>
+
+  <h2>Footnotes</h2>
+  <p><a class="footnote" href="#ref1">[ 1 ]</a> <b>Varius duis</b>: At consectetur lorem donec massa sapien faucibus. Velit egestas dui id ornare arcu. Aliquet nibh praesent tristique magna sit amet purus gravida quis. Tortor consequat id porta nibh venenatis cras.</p>
 </body>
 </html>
